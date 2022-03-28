@@ -1,19 +1,21 @@
 class Validation {
   constructor() {}
-  checkEmpty = (value, contentID, message) => {
+  checkEmpty = (value, id, contentID, message) => {
     // trim() xóa dấu khoảng trắng ở đầu và sau đoạn chữ
     if (value.trim() != "") {
       //Nếu hợp lệ
       document.getElementById(contentID).innerHTML = "";
       document.getElementById(contentID).style.display = "none";
+      document.getElementById(id).classList.remove("showIcon");
       return true;
     }
     //không hợp lệ
     document.getElementById(contentID).innerHTML = message;
     document.getElementById(contentID).style.display = "block";
+    document.getElementById(id).classList.add("showIcon");
     return false;
   };
-  checkName = (value, contentID, message) => {
+  checkName = (value, id,contentID, message) => {
     //sỬ DỤNG chuỗi sting khi biểu thức quâ dài => dễ đọc code
     var patternString =
       "^[a-zA-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ" +
@@ -29,16 +31,18 @@ class Validation {
       // đúng định dạng
       document.getElementById(contentID).innerHTML = "";
       document.getElementById(contentID).style.display = "none";
+      document.getElementById(id).classList.remove("showIcon");
       return true;
     } else {
       // ko đúng định dạng
       document.getElementById(contentID).innerHTML = message;
       document.getElementById(contentID).style.display = "block";
+      document.getElementById(id).classList.add("showIcon");
       return false;
     }
   };
 
-  checkEmail = (value, contentID, message) => {
+  checkEmail = (value,id,contentID, message) => {
     // Dùng theo chuỗi của biểu thức chính quy (regexp)
     var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     // kiểm tra value có đúng định dạng email ko
@@ -46,26 +50,30 @@ class Validation {
     if (value.match(pattern)) {
       document.getElementById(contentID).innerHTML = "";
       document.getElementById(contentID).style.display = "none";
+      document.getElementById(id).classList.remove("showIcon");
       return true;
     } else {
       // ko đúng định dạng
       document.getElementById(contentID).innerHTML = message;
       document.getElementById(contentID).style.display = "block";
+      document.getElementById(id).classList.add("showIcon");
       return false;
     }
   };
-  checkPass = (value, contentID, message) => {
+  checkPass = (value,id,contentID, message) => {
     var pattent =
       /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{6,8}$/;
 
     if (pattent.test(value)) {
       document.getElementById(contentID).innerHTML = "";
       document.getElementById(contentID).style.display = "none";
+      document.getElementById(id).classList.remove("showIcon");
       return true;
     } else {
       // ko đúng định dạng
       document.getElementById(contentID).innerHTML = message;
       document.getElementById(contentID).style.display = "block";
+      document.getElementById(id).classList.add("showIcon");
       return false;
     }
   };
