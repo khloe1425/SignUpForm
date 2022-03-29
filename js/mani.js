@@ -11,6 +11,13 @@ checkFaulsForm = () => {
   var email = getEle("email").value;
   var pass = getEle("password").value;
 
+  // fName.addEventListener('click',()=>{
+  //   fName
+  // })
+
+
+
+
   isValid &=
     validation.checkEmpty(
       fName,
@@ -71,3 +78,11 @@ checkFaulsForm = () => {
     console.log("Succes");
   }
 };
+
+let deleteIcon =[...document.getElementsByTagName("input")];
+
+deleteIcon.map((x)=>{
+  x.addEventListener('click',()=>{
+    x.classList.remove("showIcon")
+  })
+})
